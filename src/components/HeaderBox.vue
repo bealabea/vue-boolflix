@@ -1,9 +1,9 @@
 <template>
   <div class="header-container">
-      <div><h1>BOOLFLIX</h1> <span>" tuduuun... "</span> </div>
+      <div><img src="@/assets/boolflix.png" alt=""> <span>" tuduuun... "</span> </div>
       <div class="search-bar">
-      <input type="text" placeholder="Search Movie" v-model="select" @keyup.enter="filterMovie(select)">
-      <button @click="filterMovie(select)">Search</button>
+      <input type="text" placeholder="Search Movie" v-model="select" @keyup.enter="filterMovie(select, video)">
+      <button @click="filterMovie(select, video)">Search</button>
       </div>
   </div>
 </template>
@@ -14,13 +14,17 @@ export default {
   name: 'App',
   components: {
   },
+  props: {
+      video: Object,
+  },
   data(){
       return {
       select: '',
       }
   },
   methods: {
-      filterMovie(select) {
+      filterMovie(select, video) {
+        video.flag=false;
         this.$emit('movies', select);
         this.$emit('series', select);
         this.select = '';
@@ -36,9 +40,9 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    h1 {
-        display: inline-block;
-        color: red;
+    position: sticky;
+    img{
+        width: 150px;
     }
     span {
         color: #8d8d8d;

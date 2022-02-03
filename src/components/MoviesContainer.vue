@@ -30,11 +30,18 @@ export default {
 
 <style lang="scss" scoped>
 main{
+    max-width: 1800px;
+    margin: 0 auto;
     padding: 100px;
     color: #d4d4d4;
+    z-index: 1001;
+    h2{
+        z-index: 1000;
+    }
 .container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     padding: 20px 0px;
 }
 }
