@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <header-box @search="movieResearch" :movieList="movieList"/>
-    <movies-container :movieList="movieList"/>
+    <header-box @movies="movieResearch" @series="seriesResearch" :movieList="movieList" :seriesList="seriesList"/>
+    <movies-container :movieList="movieList" :seriesList="seriesList"/>
   </div>
 </template>
 
@@ -14,11 +14,12 @@ export default {
   name: 'App',
   components: {
     HeaderBox,
-    MoviesContainer
+    MoviesContainer,
   },
   data() {
     return {
     movieList: [],
+    seriesList: []
     }
   },
   methods: {
@@ -26,6 +27,12 @@ export default {
     axios.get(`https://api.themoviedb.org/3/search/movie/?query=${select}&api_key=5fb1012dc01c82f51045ed3d6d801799`)
     .then((response) => {
       this.movieList = response.data.results;
+    });
+  },
+  seriesResearch(select) {
+    axios.get(`https://api.themoviedb.org/3/search/tv/?query=${select}&api_key=5fb1012dc01c82f51045ed3d6d801799`)
+    .then((response) => {
+      this.seriesList = response.data.results;
     });
   }
 }

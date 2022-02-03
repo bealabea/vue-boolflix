@@ -21,9 +21,10 @@ export default {
   },
   methods: {
       filterMovie(select) {
-        this.$emit('search', select)
+        this.$emit('movies', select);
+        this.$emit('series', select);
         this.select = '';
-      }
+      },
   }
 }
 </script>
