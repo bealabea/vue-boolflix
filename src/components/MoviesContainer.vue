@@ -20,8 +20,8 @@ export default {
 
 <style lang="scss" scoped>
 .movies-container {
-    background-color: #333;
+    display: flex;
+    flex-wrap: wrap;
     padding: 100px;
-    height: calc(100vh - 60px);
 }
 </style>

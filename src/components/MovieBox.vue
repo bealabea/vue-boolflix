@@ -1,30 +1,31 @@
 <template>
   <div class="movie-box">
-      <img :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`" alt="">
-  </div>
+    <img
+      :src="`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${movie.poster_path}`"
+      alt=""/>
+    <div class="movie-info">
+      <div class="info-box">
+        <div class="text-info"><strong>Titolo:</strong> {{ movie.title }}</div>
+        <div class="text-info"><strong>Titolo originale:</strong> {{ movie.original_title }}</div>
+        <div class="text-info"><strong>Voto:</strong> {{ movie.vote_average }}</div>
+        <div class="text-info"><strong>Overview:</strong> {{ movie.overview }}</div>
+        <div class="text-info">
+            <strong>Lingua:</strong><img src="../assets/en.png" alt=""></div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {
-  
-  },
+  name: "App",
+  components: {},
   props: {
-      movie: Object
-  }
-}
+    movie: Object,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.movie-box {
-    background-color: #1a1a1a;
-    height: 300px;
-    width: 250px;
-    padding: 20px;
-    img {
-        width: 100%;
-    }
-}
+@import '@/style/movie-box.scss'
 </style>
