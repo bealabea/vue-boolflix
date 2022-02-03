@@ -1,8 +1,8 @@
 <template>
   <div class="header-container">
       <div>BOOLFLIX</div>
-      <input type="text" placeholder="Search Movie" >
-      <button @click="$emit('search')">Search</button>
+      <input type="text" placeholder="Search Movie" v-model="select">
+      <button @click="$emit('search', select)">Search</button>
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   },
   data(){
       return {
-    //   searchString: ''
+      select: ''
       }
   }
 }
