@@ -22,7 +22,7 @@ export default {
     movieList: [],
     seriesList: [],
     video:{url:'@/assets/boolflix.gif', flag:true},
-    langList: ['en', 'it', 'ja', 'es', 'fr']
+    langList: ['en', 'it', 'ja', 'es', 'fr', 'de']
     }
   },
   methods: {
