@@ -4,7 +4,7 @@
       <img src="@/assets/boolflix.png" alt="" /> <span>" tuduuun... "</span>
     </div>
     <div class="video-container">
-        <div class="search-bar">
+        <div v-if="flag === true" class="search-bar">
         <input
           type="text"
           placeholder="Search Movie"
@@ -30,6 +30,7 @@ export default {
   data() {
     return {
       select: "",
+      flag: false
     };
   },
   methods: {
@@ -39,8 +40,11 @@ export default {
       this.$emit("series", select);
       this.select = "";
     },
-  },
-};
+    },
+    mounted() {
+        setTimeout(() => {this.flag = true}, 3500);
+    }
+}
 </script>
 
 <style lang="scss" scoped>
