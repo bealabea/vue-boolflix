@@ -1,12 +1,12 @@
 <template>
     <main>
-        <h2>MOVIES</h2>
+        <h1>MOVIES</h1>
         <div class="container">
-            <movie-box v-for="movie in movieList" :key="movie.id" :movie="movie"/>
+            <movie-box v-for="movie in movieList" :key="movie.id" :movie="movie" :langList="langList"/>
         </div>
-        <h2>SERIES</h2>
+        <h1>SERIES</h1>
         <div class="container">
-            <serie-tv-box v-for="serie in seriesList" :key="serie.id" :serie="serie"/>
+            <serie-tv-box v-for="serie in seriesList" :key="serie.id" :serie="serie" :langList="langList"/>
         </div>
     </main>
 </template>
@@ -23,7 +23,8 @@ export default {
   },
   props: {
       movieList: Array,
-      seriesList: Array
+      seriesList: Array,
+      langList: Array
   },
 }
 </script>
@@ -34,14 +35,10 @@ main{
     margin: 0 auto;
     padding: 100px;
     color: #d4d4d4;
-    z-index: 1001;
-    h2{
-        z-index: 1000;
-    }
 .container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     padding: 20px 0px;
 }
 }

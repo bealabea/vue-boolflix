@@ -7,11 +7,11 @@
       <div class="info-box">
         <div class="text-info"><strong>Titolo:</strong> {{ movie.title }}</div>
         <div class="text-info"><strong>Titolo originale:</strong> {{ movie.original_title }}</div>
-        <div class="text-info"><strong>Voto:</strong> {{ movie.vote_average }}</div>
+        <div class="text-info"><strong>Voto:</strong> <i  v-for="index in Math.round(movie.vote_average / 2)" :key="index" class="icon-color fas fa-star"></i></div>
         <div class="text-info"><strong>Overview:</strong> {{ movie.overview }}</div>
         <div class="text-info">
-            <strong>Lingua: </strong> <span>{{movie.original_language}}</span>
-            <img :src="`/flags/${movie.original_language}.png`" alt=""></div>
+            <strong>Lingua: </strong> <span v-if="!langList.includes(movie.original_language)">{{movie.original_language}}</span>
+            <img v-else :src="`/flags/${movie.original_language}.png`" alt=""></div>
         </div>
       </div>
     </div>
@@ -23,8 +23,9 @@ export default {
   components: {},
   props: {
     movie: Object,
+    langList: Array
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

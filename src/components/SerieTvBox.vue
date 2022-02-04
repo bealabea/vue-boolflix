@@ -7,11 +7,11 @@
       <div class="info-box">
         <div class="text-info"><strong>Titolo:</strong> {{ serie.name }}</div>
         <div class="text-info"><strong>Titolo originale:</strong> {{ serie.original_name }}</div>
-        <div class="text-info"><strong>Voto:</strong> {{ serie.vote_average }}</div>
+        <div class="text-info"><strong>Voto:</strong> <i  v-for="index in Math.round(serie.vote_average / 2)" :key="index" class="icon-color fas fa-star"></i></div>
         <div class="text-info"><strong>Overview:</strong> {{ serie.overview }}</div>
         <div class="text-info">
-            <strong>Lingua: </strong> <span>{{serie.original_language}} </span>
-            <img :src="`/flags/${serie.original_language}.png`" alt=""></div>
+            <strong>Lingua: </strong> <span v-if="!langList.includes(serie.original_language)">{{serie.original_language}}</span>
+            <img v-else :src="`/flags/${serie.original_language}.png`" alt=""></div>
         </div>
       </div>
     </div>
@@ -23,6 +23,7 @@ export default {
   components: {},
   props: {
     serie: Object,
+    langList: Array
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header-box @movies="movieResearch" @series="seriesResearch" :movieList="movieList" :seriesList="seriesList" :video="video"/>
-    <movies-container :movieList="movieList" :seriesList="seriesList"/>
+    <movies-container :movieList="movieList" :seriesList="seriesList" :langList="langList"/>
   </div>
 </template>
 
@@ -21,18 +21,29 @@ export default {
     return {
     movieList: [],
     seriesList: [],
-    video:{url:'@/assets/boolflix.gif', flag:true}
+    video:{url:'@/assets/boolflix.gif', flag:true},
+    langList: ['en', 'it', 'ja', 'es', 'fr']
     }
   },
   methods: {
     movieResearch(select) {
-    axios.get(`https://api.themoviedb.org/3/search/movie/?query=${select}&api_key=5fb1012dc01c82f51045ed3d6d801799`)
+      const params = {
+        query: select,
+        api_key: '5fb1012dc01c82f51045ed3d6d801799'
+      }
+
+    axios.get(`https://api.themoviedb.org/3/search/movie`, {params})
     .then((response) => {
       this.movieList = response.data.results;
     });
   },
   seriesResearch(select) {
-    axios.get(`https://api.themoviedb.org/3/search/tv/?query=${select}&api_key=5fb1012dc01c82f51045ed3d6d801799`)
+    const params = {
+        query: select,
+        api_key: '5fb1012dc01c82f51045ed3d6d801799'
+      }
+
+    axios.get(`https://api.themoviedb.org/3/search/tv`, {params})
     .then((response) => {
       this.seriesList = response.data.results;
     });
@@ -42,5 +53,6 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://use.fontawesome.com/releases/v5.7.1/css/all.css');
 @import '@/style/main.scss';
 </style>
