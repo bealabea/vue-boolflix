@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <header-box @movies="movieResearch" @series="seriesResearch" :movieList="movieList" :seriesList="seriesList" :video="video"/>
-    <video-bool @movies="movieResearch" @series="seriesResearch" :video="video"/>
     <movies-container :movieList="movieList" :seriesList="seriesList"/>
   </div>
 </template>
@@ -10,20 +9,19 @@
   import axios from "axios";
 import HeaderBox from './components/HeaderBox.vue';
 import MoviesContainer from './components/MoviesContainer.vue';
-import VideoBool from './components/VideoBool.vue';
 
 export default {
   name: 'App',
   components: {
     HeaderBox,
     MoviesContainer,
-    VideoBool,
+
   },
   data() {
     return {
     movieList: [],
     seriesList: [],
-    video:{url:'/flags/Bool.mp4', flag:true}
+    video:{url:'@/assets/boolflix.gif', flag:true}
     }
   },
   methods: {
