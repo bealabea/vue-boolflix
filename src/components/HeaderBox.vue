@@ -1,20 +1,26 @@
 <template>
   <div>
-    <div class="logo-container">
-      <img src="@/assets/boolflix.png" alt="" /> <span>" tuduuun... "</span>
-    </div>
+    <nav class="nav-container">
+      <div class="logo-container">
+        <img src="@/assets/boolflix.png" alt="" /> <span>" tuduuun... "</span>
+      </div>
+    </nav>
     <div class="video-container">
-        <div v-if="flag === true" class="search-bar">
+
+      <div v-if="show === true" class="search-bar">
+
         <input
           type="text"
           placeholder="Search Movie"
           v-model="select"
-          @keyup.enter="filterMovie(select, video)"
+          @keyup.enter="filterMovie(select)"
         />
-        <button @click="filterMovie(select, video)">Search</button>
-      </div>
-      <img v-if="video.flag === true" src="@/assets/boolflix.gif" alt="" />
+        <button @click="filterMovie(select)">Search</button>
 
+      </div>
+
+      <img
+      v-if="show === false" src="@/assets/boolflix.gif" alt="" />
       
     </div>
   </div>
@@ -23,28 +29,28 @@
 <script>
 export default {
   name: "App",
-  components: {},
-  props: {
-    video: Object,
-  },
+
   data() {
     return {
       select: "",
-      flag: false
     };
   },
+  
+  props: {
+    video: Object,
+    show: Boolean,
+    popular: Boolean,
+  },
+
   methods: {
-    filterMovie(select, video) {
-      video.flag = false;
+    filterMovie(select) {
       this.$emit("movies", select);
       this.$emit("series", select);
       this.select = "";
     },
-    },
-    mounted() {
-        setTimeout(() => {this.flag = true}, 3500);
-    }
-}
+  },
+  
+};
 </script>
 
 <style lang="scss" scoped>

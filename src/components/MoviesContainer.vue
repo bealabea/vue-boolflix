@@ -1,30 +1,67 @@
 <template>
   <main>
-    <div class="category-title">
-      <h1>MOVIES</h1>
+    <div v-if="popular === true">
+      
+      <div class="category-title">
+        <h1>Popular Movies</h1>
+      </div>
+      <div class="container">
+        <movie-box
+          v-for="movie in movieList"
+          :key="movie.id"
+          :movie="movie"
+          :name="movie.title"
+          :originalName="movie.original_title"
+          :langList="langList"
+        />
+      </div>
+
+      <div class="category-title">
+        <h1>Popular Series TV</h1>
+      </div>
+      <div class="container">
+        <movie-box
+          v-for="movie in seriesList"
+          :key="movie.id"
+          :movie="movie"
+          :name="movie.title"
+          :originalName="movie.original_title"
+          :langList="langList"
+        />
+      </div>
+
     </div>
-    <div class="container">
-      <movie-box
-        v-for="movie in movieList"
-        :key="movie.id"
-        :movie="movie"
-        :name="movie.title"
-        :originalName="movie.original_title"
-        :langList="langList"
-      />
-    </div>
-    <div class="category-title">
-      <h1>SERIES</h1>
-    </div>
-    <div class="container">
-      <movie-box
-        v-for="movie in seriesList"
-        :key="movie.id"
-        :movie="movie"
-        :name="movie.name"
-        :originalName="movie.original_name"
-        :langList="langList"
-      />
+
+    <div v-else>
+
+      <div class="category-title">
+        <h1>Movies</h1>
+      </div>
+      <div class="container">
+        <movie-box
+          v-for="movie in movieList"
+          :key="movie.id"
+          :movie="movie"
+          :name="movie.title"
+          :originalName="movie.original_title"
+          :langList="langList"
+        />
+      </div>
+
+      <div class="category-title">
+        <h1>Series TV</h1>
+      </div>
+      <div class="container">
+        <movie-box
+          v-for="movie in seriesList"
+          :key="movie.id"
+          :movie="movie"
+          :name="movie.name"
+          :originalName="movie.original_name"
+          :langList="langList"
+        />
+      </div>
+
     </div>
   </main>
 </template>
@@ -34,36 +71,41 @@ import MovieBox from "./MovieBox.vue";
 
 export default {
   name: "App",
+
   components: {
     MovieBox,
   },
+
   props: {
     movieList: Array,
     seriesList: Array,
     langList: Array,
+    popular: Boolean,
+    show: Boolean,
   },
+
 };
 </script>
 
 <style lang="scss" scoped>
+
 main {
   padding: 100px 0;
-  color: #d4d4d4;
+  color: #bebebe;
   text-align: center;
   .category-title {
     margin: 30px 0;
-    background-color: #000;
-    padding: 8px;
-    width: 100%;
-    box-shadow: 0 0 40px 2px #f01330;
+    padding: 8px 200px;
+    text-align: left;
   }
   .container {
-    max-width: 1800px;
     margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px 0px;
+    border-radius: 10px;
+    background-color: rgba(240, 20, 49, 0.25);
+    box-shadow: 0 0 40px 1px rgba(240, 20, 49, 0.52);
+    overflow-y: hidden;
+    overflow-x: auto;
   }
 }
 </style>
