@@ -1,19 +1,21 @@
+@import "@/style/variables.scss";
+
 .nav-container {
-  background-color: #131313;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 80px;
   padding: 20px;
   .logo-container {
     display: flex;
     justify-content: start;
     align-items: center;
-    position: sticky;
+    cursor: pointer;
     img {
       width: 150px;
     }
     span {
-      color: #8d8d8d;
+      color: $second-color;
       margin-left: 10px;
       font-style: italic;
       font-size: 18px;
@@ -24,7 +26,6 @@
   overflow: hidden;
   img {
     width: 100%;
-    position: fixed;
   }
   .search-bar {
     text-align: center;
@@ -32,10 +33,9 @@
     top: 10%;
     left: 50%;
     transform: translate(-50%);
-    z-index: 1001;
     animation-name: flash;
     animation-duration: 3s;
-    background-color: #000;
+    background-color: $first-color;
     border-radius: 10px;
     input {
       padding: 10px;
@@ -44,7 +44,7 @@
       border: none;
       outline: none;
       border-radius: 10px;
-      color: #8d8d8d;
+      color: $second-color;
       font-size: 15px;
     }
     button {
@@ -53,24 +53,22 @@
       border-radius: 10px;
       border: none;
       cursor: pointer;
-      background-color: #8d8d8d;
+      background-color: $second-color;
       font-size: 15px;
     }
   }
   @keyframes flash {
     0% {
-      background-color: #000;
-      box-shadow: 0 0 30px 2px #000;
+      background-color: $first-color;
+      box-shadow: 0 0 30px 2px $first-color;
     }
     50% {
       background-color: #8f1b2a;
       box-shadow: 0 0 30px 2px #f01330;
     }
     100% {
-      background-color: #000;
-      box-shadow: 0 0 30px 2px #000;
+      background-color: $first-color;
+      box-shadow: 0 0 30px 2px $first-color;
     }
   }
 }
-
-// box-shadow: 0 0 30px 2px #3b3b3b;

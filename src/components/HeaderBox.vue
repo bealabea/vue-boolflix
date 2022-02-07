@@ -2,7 +2,7 @@
   <div>
     <nav class="nav-container">
       <div class="logo-container">
-        <img src="@/assets/boolflix.png" alt="" /> <span>" tuduuun... "</span>
+        <img @click="backToPopular(popular)" src="@/assets/boolflix.png" alt="" /> <span>" tuduuun... "</span>
       </div>
     </nav>
     <div class="video-container">
@@ -15,7 +15,7 @@
           v-model="select"
           @keyup.enter="filterMovie(select)"
         />
-        <button @click="filterMovie(select)">Search</button>
+        <button @click="filterMovie(select)">Search</button> 
 
       </div>
 
@@ -37,19 +37,20 @@ export default {
   },
   
   props: {
-    video: Object,
     show: Boolean,
     popular: Boolean,
   },
 
   methods: {
     filterMovie(select) {
-      this.$emit("movies", select);
-      this.$emit("series", select);
+      this.$emit('movies', select);
       this.select = "";
     },
+    backToPopular(popular) {
+      this.$emit('back', popular);
+    },
   },
-  
+
 };
 </script>
 

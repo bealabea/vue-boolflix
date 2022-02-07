@@ -2,6 +2,7 @@
   <div id="app">
     <header-box
       @movies="movieResearch"
+      @back="getPopular"
       :movieList="movieList"
       :seriesList="seriesList"
       :popular="popular"
@@ -25,7 +26,7 @@ import MoviesContainer from "./components/MoviesContainer.vue";
 
 export default {
   name: "App",
-  
+
   components: {
     HeaderBox,
     MoviesContainer,
@@ -49,7 +50,7 @@ export default {
         query: select,
         api_key: "5fb1012dc01c82f51045ed3d6d801799",
       };
-      
+
       axios
         .get(`https://api.themoviedb.org/3/search/movie`, { params })
         .then((response) => {
@@ -74,12 +75,16 @@ export default {
       axios
         .get(`https://api.themoviedb.org/3/movie/popular`, { params })
         .then((response) => {
-          this.movieList = response.data.results;
+          for(let i = 0; i < 10; i++) {
+        this.movieList.push(response.data.results[i])
+      }
         });
       axios
         .get(`https://api.themoviedb.org/3/tv/popular`, { params })
         .then((response) => {
-          this.seriesList = response.data.results;
+          for(let i = 0; i < 10; i++) {
+        this.seriesList.push(response.data.results[i])
+      }
         });
     },
   },
@@ -89,9 +94,8 @@ export default {
       this.getPopular();
       this.show = true;
     }, 4000);
-  },
-
-};
+},
+}
 </script>
 
 <style lang="scss">

@@ -66,9 +66,9 @@ export default {
     getStars(vote) {
       return Math.round(vote / 2);
     },
-  },
-  
-};
+}
+
+}
 </script>
 
 <style lang="scss" scoped>

@@ -104,7 +104,6 @@ main {
     border-radius: 10px;
     background-color: rgba(240, 20, 49, 0.25);
     box-shadow: 0 0 40px 1px rgba(240, 20, 49, 0.52);
-    overflow-y: hidden;
     overflow-x: auto;
   }
 }
