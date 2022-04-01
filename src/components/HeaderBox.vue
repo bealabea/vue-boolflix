@@ -4,10 +4,12 @@
       <div class="logo-container">
         <img @click="backToPopular(popular)" src="@/assets/boolflix.png" alt="" /> <span>" tuduuun... "</span>
       </div>
+      <ul>
+        <li>home</li>
+        <li>home</li>
+      </ul>
     </nav>
-    <div class="video-container">
-
-      <div v-if="show === true" class="search-bar">
+    <div v-if="show" class="search-bar">
 
         <input
           type="text"
@@ -17,12 +19,17 @@
         />
         <button @click="filterMovie(select)">Search</button> 
 
-      </div>
+    </div>
+    
+    <transition name="fade">
+    <div v-if="!show" class="video-container">
 
       <img
-      v-if="show === false" src="@/assets/boolflix.gif" alt="" />
+      src="@/assets/boolflix.gif" alt="" />
       
     </div>
+    </transition>
+
   </div>
 </template>
 
@@ -56,4 +63,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/style/header-box.scss";
+
 </style>

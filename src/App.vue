@@ -90,8 +90,9 @@ export default {
   },
 
   mounted() {
+    this.getPopular();
     setTimeout(() => {
-      this.getPopular();
+      
       this.show = true;
     }, 4000);
 },

@@ -6,6 +6,17 @@
   align-items: center;
   height: 80px;
   padding: 20px;
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+  .buttonn button{
+    margin-left: 20px;
+    padding: 15px;
+    font-size: 20px;
+  }
   .logo-container {
     display: flex;
     justify-content: start;
@@ -22,53 +33,64 @@
     }
   }
 }
+.fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-leave-to {
+  opacity: 0;
+}
 .video-container {
-  overflow: hidden;
+  overflow-y: hidden;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  z-index: 1100;
   img {
     width: 100%;
   }
-  .search-bar {
-    text-align: center;
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%);
-    animation-name: flash;
-    animation-duration: 3s;
-    background-color: $first-color;
+}
+.search-bar {
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  animation-name: flash;
+  animation-duration: 3s;
+  background-color: $first-color;
+  border-radius: 10px;
+  input {
+    padding: 10px;
+    width: 300px;
+    background-color: #3b3b3b;
+    border: none;
+    outline: none;
     border-radius: 10px;
-    input {
-      padding: 10px;
-      width: 300px;
-      background-color: #3b3b3b;
-      border: none;
-      outline: none;
-      border-radius: 10px;
-      color: $second-color;
-      font-size: 15px;
-    }
-    button {
-      margin-left: 5px;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      background-color: $second-color;
-      font-size: 15px;
-    }
+    color: $second-color;
+    font-size: 15px;
   }
-  @keyframes flash {
-    0% {
-      background-color: $first-color;
-      box-shadow: 0 0 30px 2px $first-color;
-    }
-    50% {
-      background-color: #8f1b2a;
-      box-shadow: 0 0 30px 2px #f01330;
-    }
-    100% {
-      background-color: $first-color;
-      box-shadow: 0 0 30px 2px $first-color;
-    }
+  button {
+    margin-left: 5px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: $second-color;
+    font-size: 15px;
+  }
+}
+@keyframes flash {
+  0% {
+    background-color: $first-color;
+    box-shadow: 0 0 30px 2px $first-color;
+  }
+  50% {
+    background-color: #8f1b2a;
+    box-shadow: 0 0 30px 2px #f01330;
+  }
+  100% {
+    background-color: $first-color;
+    box-shadow: 0 0 30px 2px $first-color;
   }
 }

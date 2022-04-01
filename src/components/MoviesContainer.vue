@@ -34,10 +34,10 @@
 
     <div v-else>
 
-      <div class="category-title">
+      <div v-if="show === true" class="category-title">
         <h1>Movies</h1>
       </div>
-      <div class="container">
+      <div v-if="show === true" class="container">
         <movie-box
           v-for="movie in movieList"
           :key="movie.id"
@@ -48,10 +48,10 @@
         />
       </div>
 
-      <div class="category-title">
+      <div v-if="show === true" class="category-title">
         <h1>Series TV</h1>
       </div>
-      <div class="container">
+      <div v-if="show === true" class="container">
         <movie-box
           v-for="movie in seriesList"
           :key="movie.id"
@@ -93,6 +93,7 @@ main {
   padding: 100px 0;
   color: #bebebe;
   text-align: center;
+  position: relative;
   .category-title {
     margin: 30px 0;
     padding: 8px 200px;
